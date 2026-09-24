@@ -1,0 +1,8 @@
+1372B - 1300 - lcm
+1915E - 1300 
+1927D - 1300
+1234B2 - 1300
+1520D - 1200 (had to see one hint on tlecp31)
+1527B1 - 1200 (It is not always greedy!)
+1931D - 1300 (had to see two hints on tlecp31)
+2145C - 1300 see editorial

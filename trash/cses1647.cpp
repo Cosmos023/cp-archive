@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using lli = long long int;
+using vi = vector<int>;
+using vll = vector<lli>;
+using si = set<int>;
+using pii = pair<int, int>;
+using pll = pair<lli, lli>;
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sor(a) sort((a).begin(),(a).end())
+#define pL1(V,n) for(int i=1;i<=(n);i++)cout<<(V)[i]<<" ";cout<<"\n";
+#define pL(s) for(auto const& i:s) cout<<i<<" "; cout<<"\n";
+#define YES cout<<"YES\n"
+#define NO cout<<"NO\n"
+#ifndef ONLINE_JUDGE
+#include "util/Debug.h"
+#else
+#define debug(...)
+#endif
+
+int log2_floor(unsigned long long x) {
+    return 63-__builtin_clzll(x);
+}
+
+void solve()
+{
+	int n,q;
+	cin >> n >> q;
+	vector<int> a(n);
+	for(int i=0; i<n; i++) cin >> a[i];
+	int K = 25;
+	vector<vi> st(K+1, vi(n+1,INT_MAX));
+	for(int i = 0; i<n; i++)
+		st[0][i]=a[i];
+	for(int i = 1; i<=K; i++)
+	{
+		for(int j = 0; j+(1<<i)-1<n; j++)
+		{
+			st[i][j] = min(st[i-1][j], st[i-1][j+(1<<(i-1))]);
+		}
+	}
+	while(q--)
+	{
+		int x,y; cin>>x>>y; x--; y--;
+		debug(log2_floor(y-x+1));
+		int lg = log2_floor(y-x+1);
+		int ans = min(st[lg][x], st[lg][y-(1<<lg)+1]);
+		cout<<ans<<endl;
+	}
+}
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int t=1;
+	// cin >> t;
+	while(t--)
+	{
+		solve();
+	}
+}
+
