@@ -1,1 +1,4 @@
 *.exe
+*.out
+*.in
+desktop.ini
